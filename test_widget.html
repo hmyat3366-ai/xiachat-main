@@ -7,7 +7,25 @@
   <h1>XiaChat Production Test Page</h1>
   <p>The chat widget should appear in the bottom right corner.</p>
   
-  <!-- This script points to the live Render backend -->
-  <script src="https://xiachat.onrender.com/public/widget.js" data-workspace-id="6a4bae09038d759681a2aa20"></script>
+  <!-- Auto-detect logged-in users -->
+  <script>
+    try {
+      var storedUser = localStorage.getItem('sb-YOUR_SUPABASE_ID-auth-token');
+      if (storedUser) {
+        var authData = JSON.parse(storedUser);
+        var u = authData.user;
+        if (u) {
+          window.XiaChatVisitorName = u.user_metadata?.name || u.user_metadata?.full_name || u.email || '';
+          window.XiaChatVisitorEmail = u.email || '';
+        }
+      }
+    } catch(e) {}
+  </script>
+
+  <!-- Xia Chat Widget -->
+  <script
+    src="https://xiachat.onrender.com/public/widget.js"
+    data-workspace-id="6a4bae09038d759681a2aa20">
+  </script>
 </body>
 </html>

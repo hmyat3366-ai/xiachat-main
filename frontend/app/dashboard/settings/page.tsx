@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
@@ -846,30 +846,14 @@ function SettingsContent() {
               
               <div className="relative">
                 <pre className="bg-gray-900 text-gray-300 p-4 rounded-xl text-sm font-mono overflow-x-auto leading-relaxed">
-                  <code>{`<!-- Auto-detect logged-in users -->
-<script>
-  try {
-    var storedUser = localStorage.getItem('sb-YOUR_SUPABASE_ID-auth-token');
-    if (storedUser) {
-      var authData = JSON.parse(storedUser);
-      var u = authData.user;
-      if (u) {
-        window.XiaChatVisitorName = u.user_metadata?.name || u.user_metadata?.full_name || u.email || '';
-        window.XiaChatVisitorEmail = u.email || '';
-      }
-    }
-  } catch(e) {}
-</script>
-
-<!-- Xia Chat Widget -->
-<script
+                  <code>{`<script
   src="${process.env.NEXT_PUBLIC_API_URL || "https://xiachat.onrender.com"}/public/widget.js"
   data-workspace-id="${userWorkspaceId}">
 </script>`}</code>
                 </pre>
                 <button 
                   onClick={() => {
-                    const code = `<!-- Auto-detect logged-in users -->\n<script>\n  try {\n    var storedUser = localStorage.getItem('sb-YOUR_SUPABASE_ID-auth-token');\n    if (storedUser) {\n      var authData = JSON.parse(storedUser);\n      var u = authData.user;\n      if (u) {\n        window.XiaChatVisitorName = u.user_metadata?.name || u.user_metadata?.full_name || u.email || '';\n        window.XiaChatVisitorEmail = u.email || '';\n      }\n    }\n  } catch(e) {}\n</script>\n\n<!-- Xia Chat Widget -->\n<script\n  src="${process.env.NEXT_PUBLIC_API_URL || "https://xiachat.onrender.com"}/public/widget.js"\n  data-workspace-id="${userWorkspaceId}">\n</script>`;
+                    const code = `<script\n  src="${process.env.NEXT_PUBLIC_API_URL || "https://xiachat.onrender.com"}/public/widget.js"\n  data-workspace-id="${userWorkspaceId}">\n</script>`;
                     navigator.clipboard.writeText(code).then(() => {
                       setCopied(true);
                       setTimeout(() => setCopied(false), 2000);
