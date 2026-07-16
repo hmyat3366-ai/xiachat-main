@@ -888,8 +888,7 @@ function SettingsContent() {
                       <thead>
                         <tr className="bg-[rgba(255,255,255,0.02)] border-b border-[rgba(255,255,255,0.08)] text-xs uppercase tracking-wider text-[#A1A1AA] font-semibold">
                           <th className="px-4 py-3">Website Domain</th>
-                          <th className="px-4 py-3">Status</th>
-                          <th className="px-4 py-3 text-right">Actions</th>
+                          <th className="px-4 py-3 text-right">Status</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-[rgba(255,255,255,0.04)]">
@@ -899,30 +898,8 @@ function SettingsContent() {
                               <svg className="w-4 h-4 text-[#A1A1AA]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
                               {item.domain}
                             </td>
-                            <td className="px-4 py-3">
-                              <span className="text-green-600 font-semibold text-xs flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-[rgba(34,197,94,0.1)]0"></span>Active</span>
-                            </td>
                             <td className="px-4 py-3 text-right">
-                              <button 
-                                onClick={async () => {
-                                  try {
-                                    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://xiachat.onrender.com"}/api/workspaces/${userWorkspaceId}/domains`, {
-                                      method: "DELETE",
-                                      headers: { 'Content-Type': 'application/json' },
-                                      body: JSON.stringify({ domain: item.domain })
-                                    });
-                                    if (res.ok) {
-                                      setConnectedDomains(connectedDomains.filter(d => d.domain !== item.domain));
-                                    }
-                                  } catch (e) {
-                                    console.error(e);
-                                  }
-                                }}
-                                className="text-red-500 hover:text-red-700 p-1.5 rounded-lg hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100"
-                                title="Delete from history"
-                              >
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
-                              </button>
+                              <span className="text-green-600 font-semibold text-xs flex items-center justify-end gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-[rgba(34,197,94,0.1)]0"></span>Active</span>
                             </td>
                           </tr>
                         ))}
@@ -932,7 +909,6 @@ function SettingsContent() {
                 )}
                 <p className="text-[11px] text-[#A1A1AA] mt-2">
                   Domains are automatically detected and added to this list when a widget is loaded on your website. 
-                  Removing a domain will only delete it from this history view.
                 </p>
               </div>
              </div>
