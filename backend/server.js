@@ -57,9 +57,7 @@ const corsOrigins = [
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow same-origin and widget requests (no origin header)
-    if (!origin || corsOrigins.includes(origin)) return callback(null, true);
-    callback(new Error('CORS: origin not allowed'));
+    callback(null, true);
   },
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   credentials: true,
