@@ -19,7 +19,7 @@ module.exports = (io) => {
     }
     
     try {
-      const decoded = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET || 'fallback_secret');
+      const decoded = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET || 'dev_fallback_secret_change_in_production');
       socket.user = decoded.user;
       next();
     } catch (err) {

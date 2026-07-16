@@ -85,7 +85,7 @@ router.post('/register', async (req, res) => {
 
     // Create JWT
     const payload = { user: { id: user.id } };
-    const token = jwt.sign(payload, process.env.JWT_SECRET || 'fallback_secret', { expiresIn: '7d' });
+    const token = jwt.sign(payload, process.env.JWT_SECRET || 'dev_fallback_secret_change_in_production', { expiresIn: '7d' });
 
     res.json({ token, user: { id: user.id, name: user.name, email: user.email, workspaces: user.workspaces } });
   } catch (err) {
@@ -109,7 +109,7 @@ router.post('/login', async (req, res) => {
 
     // Create JWT
     const payload = { user: { id: user.id } };
-    const token = jwt.sign(payload, process.env.JWT_SECRET || 'fallback_secret', { expiresIn: '7d' });
+    const token = jwt.sign(payload, process.env.JWT_SECRET || 'dev_fallback_secret_change_in_production', { expiresIn: '7d' });
 
     res.json({ token, user: { id: user.id, name: user.name, email: user.email, workspaces: user.workspaces } });
   } catch (err) {
@@ -124,7 +124,7 @@ router.get('/me', async (req, res) => {
     const token = req.header('Authorization');
     if (!token) return res.status(401).json({ error: 'No token, authorization denied' });
 
-    const decoded = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET || 'fallback_secret');
+    const decoded = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET || 'dev_fallback_secret_change_in_production');
     const user = await User.findById(decoded.user.id).select('-password');
     res.json(user);
   } catch (err) {
@@ -192,7 +192,7 @@ router.put('/reset-password/:token', async (req, res) => {
 
     // Create JWT and login the user automatically
     const payload = { user: { id: user.id } };
-    const token = jwt.sign(payload, process.env.JWT_SECRET || 'fallback_secret', { expiresIn: '7d' });
+    const token = jwt.sign(payload, process.env.JWT_SECRET || 'dev_fallback_secret_change_in_production', { expiresIn: '7d' });
 
     res.status(200).json({ 
       success: true, 
@@ -319,7 +319,7 @@ router.get('/google/callback', async (req, res) => {
 
     // Generate JWT
     const payload = { user: { id: user.id } };
-    const token = jwt.sign(payload, process.env.JWT_SECRET || 'fallback_secret', { expiresIn: '7d' });
+    const token = jwt.sign(payload, process.env.JWT_SECRET || 'dev_fallback_secret_change_in_production', { expiresIn: '7d' });
 
     // Redirect to dashboard with token and user details as parameters
     const userData = {
