@@ -182,13 +182,13 @@ export default function ContactsPage() {
   };
 
   return (
-    <div className="flex-1 flex h-full bg-[#09090B] relative">
+    <div className="flex-1 flex h-full bg-[#F8F9FC] relative">
       <div className="flex-1 flex flex-col h-full overflow-hidden">
         {/* Header */}
-        <div className="h-auto min-h-16 flex flex-col sm:flex-row sm:items-center justify-between px-6 py-3 border-b border-[rgba(255,255,255,0.08)] shrink-0 gap-3 bg-[#09090B]/80 backdrop-blur-xl">
+        <div className="h-auto min-h-16 flex flex-col sm:flex-row sm:items-center justify-between px-6 py-3 border-b border-slate-200/80 shrink-0 gap-3 bg-[#F8F9FC]/80 backdrop-blur-xl">
           <div>
-            <h1 className="text-lg font-bold text-[#FAFAFA] tracking-tight">Contacts</h1>
-            <p className="text-[11px] font-medium text-[#A1A1AA] mt-0.5">
+            <h1 className="text-lg font-bold text-slate-800 tracking-tight">Contacts</h1>
+            <p className="text-[11px] font-medium text-slate-400 mt-0.5">
               {loading ? "Loading contacts..." : `${contacts.length} contacts · Manage your CRM`}
             </p>
           </div>
@@ -200,7 +200,7 @@ export default function ContactsPage() {
               className={`px-3 py-2 text-sm font-semibold rounded-lg transition-all flex items-center gap-2 border ${
                 exportSuccess
                   ? 'bg-[rgba(34,197,94,0.1)] border-[rgba(34,197,94,0.2)] text-green-400'
-                  : 'bg-[rgba(255,255,255,0.03)] border-[rgba(255,255,255,0.08)] text-[#E4E4E7] hover:bg-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.15)] disabled:opacity-50 disabled:cursor-not-allowed'
+                  : 'bg-white border-slate-200/80 text-slate-600 hover:bg-slate-100 hover:border-[rgba(255,255,255,0.15)] disabled:opacity-50 disabled:cursor-not-allowed'
               }`}
             >
               {exportSuccess ? (
@@ -246,9 +246,9 @@ export default function ContactsPage() {
         </div>
 
         {/* Filters */}
-        <div className="p-4 border-b border-[rgba(255,255,255,0.06)] flex gap-4">
+        <div className="p-4 border-b border-slate-100 flex gap-4">
           <div className="relative flex-1 max-w-md">
-            <svg className="w-4 h-4 absolute left-3 top-2.5 text-[#A1A1AA]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
             <input 
@@ -256,10 +256,10 @@ export default function ContactsPage() {
               placeholder="Search by name, email, or company..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-lg text-sm text-[#FAFAFA] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all placeholder:text-[#A1A1AA]" 
+              className="w-full pl-9 pr-3 py-2 bg-white border border-slate-200/80 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all placeholder:text-slate-400" 
             />
           </div>
-          <select style={{colorScheme:"dark"}} className="px-3 py-2 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-lg text-sm text-[#E4E4E7] font-medium focus:outline-none focus:border-[#4F46E5]">
+          <select style={{} className="px-3 py-2 bg-white border border-slate-200/80 rounded-lg text-sm text-slate-600 font-medium focus:outline-none focus:border-[#4F46E5]">
             <option>All Segments</option>
             <option>Customers</option>
             <option>Leads</option>
@@ -272,7 +272,7 @@ export default function ContactsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-full md:min-w-[800px]">
               <thead>
-                <tr className="bg-[#09090B] border-b border-[rgba(255,255,255,0.06)] text-xs uppercase tracking-wider text-[#A1A1AA] font-semibold sticky top-0 z-10">
+                <tr className="bg-[#F8F9FC] border-b border-slate-100 text-xs uppercase tracking-wider text-slate-400 font-semibold sticky top-0 z-10">
                   <th className="px-6 py-4">Name</th>
                   <th className="px-6 py-4">Contact Info</th>
                   <th className="px-6 py-4 hidden md:table-cell">Company</th>
@@ -285,21 +285,21 @@ export default function ContactsPage() {
                 <tr 
                   key={c.id} 
                   onClick={() => setSelectedContact(c)}
-                  className={`hover:bg-[rgba(255,255,255,0.02)] transition-colors cursor-pointer ${selectedContact?.id === c.id ? 'bg-[rgba(79,70,229,0.1)]' : ''}`}
+                  className={`hover:bg-slate-50/60 transition-colors cursor-pointer ${selectedContact?.id === c.id ? 'bg-[rgba(79,70,229,0.1)]' : ''}`}
                 >
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full bg-[rgba(79,70,229,0.2)] text-[#818CF8] flex items-center justify-center font-bold text-xs">
                         {c.name.charAt(0)}
                       </div>
-                      <span className="font-semibold text-[#FAFAFA]">{c.name}</span>
+                      <span className="font-semibold text-slate-800">{c.name}</span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="text-[#FAFAFA] font-medium">{c.email}</div>
-                    <div className="text-xs text-[#A1A1AA] mt-0.5">{c.phone}</div>
+                    <div className="text-slate-800 font-medium">{c.email}</div>
+                    <div className="text-xs text-slate-400 mt-0.5">{c.phone}</div>
                   </td>
-                  <td className="px-6 py-4 text-[#A1A1AA] font-medium hidden md:table-cell">{c.company}</td>
+                  <td className="px-6 py-4 text-slate-400 font-medium hidden md:table-cell">{c.company}</td>
                   <td className="px-6 py-4">
                     <span className={`px-2 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider ${
                       c.status === 'Customer' ? 'bg-[rgba(34,197,94,0.15)] text-green-400 border border-[rgba(34,197,94,0.2)]' : 
@@ -308,12 +308,12 @@ export default function ContactsPage() {
                       {c.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-[#A1A1AA] hidden md:table-cell">{c.lastSeen}</td>
+                  <td className="px-6 py-4 text-slate-400 hidden md:table-cell">{c.lastSeen}</td>
                 </tr>
               ))}
               {filteredContacts.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="px-6 py-12 text-center text-[#A1A1AA]">
+                  <td colSpan={5} className="px-6 py-12 text-center text-slate-400">
                     No contacts found matching "{searchQuery}"
                   </td>
                 </tr>
@@ -326,44 +326,44 @@ export default function ContactsPage() {
 
       {/* Slide-over Profile Details */}
       {selectedContact && (
-        <div className="w-full sm:w-80 border-l border-[rgba(255,255,255,0.08)] bg-[#09090B] flex flex-col shadow-xl absolute right-0 top-0 bottom-0 z-20">
-          <div className="h-16 flex items-center justify-between px-4 border-b border-[rgba(255,255,255,0.08)]">
-            <h2 className="font-bold text-[#FAFAFA]">Contact Details</h2>
+        <div className="w-full sm:w-80 border-l border-slate-200/80 bg-[#F8F9FC] flex flex-col shadow-xl absolute right-0 top-0 bottom-0 z-20">
+          <div className="h-16 flex items-center justify-between px-4 border-b border-slate-200/80">
+            <h2 className="font-bold text-slate-800">Contact Details</h2>
             <button 
               onClick={() => setSelectedContact(null)}
-              className="p-1 text-[#A1A1AA] hover:text-[#FAFAFA] rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors"
+              className="p-1 text-slate-400 hover:text-slate-800 rounded-lg hover:bg-slate-100 transition-colors"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
           
-          <div className="p-6 border-b border-[rgba(255,255,255,0.06)] text-center">
+          <div className="p-6 border-b border-slate-100 text-center">
             <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#4F46E5] to-[#818CF8] text-white flex items-center justify-center font-bold text-3xl mx-auto mb-4 shadow-[0_8px_24px_rgba(79,70,229,0.4)]">
               {selectedContact.name.charAt(0)}
             </div>
-            <h3 className="text-lg font-bold text-[#FAFAFA]">{selectedContact.name}</h3>
-            <p className="text-sm text-[#A1A1AA] mt-1">{selectedContact.company}</p>
+            <h3 className="text-lg font-bold text-slate-800">{selectedContact.name}</h3>
+            <p className="text-sm text-slate-400 mt-1">{selectedContact.company}</p>
           </div>
 
           <div className="p-6 space-y-6 flex-1 overflow-y-auto">
             <div>
-              <h4 className="text-xs font-bold text-[#A1A1AA] uppercase tracking-wider mb-2">Contact Info</h4>
+              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Contact Info</h4>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-sm">
                   <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                  <span className="text-[#FAFAFA]">{selectedContact.email}</span>
+                  <span className="text-slate-800">{selectedContact.email}</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <svg className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.48-4.08-7.074-6.996l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
-                  <span className="text-[#FAFAFA]">{selectedContact.phone}</span>
+                  <span className="text-slate-800">{selectedContact.phone}</span>
                 </div>
               </div>
             </div>
 
-            <hr className="border-[rgba(255,255,255,0.06)]" />
+            <hr className="border-slate-100" />
 
             <div>
-              <h4 className="text-xs font-bold text-[#A1A1AA] uppercase tracking-wider mb-2">Actions</h4>
+              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Actions</h4>
               <div className="space-y-2">
                 <button 
                   onClick={() => router.push(`/dashboard`)} 
@@ -377,7 +377,7 @@ export default function ContactsPage() {
                     setEditForm({ name: selectedContact.name, email: selectedContact.email, phone: selectedContact.phone, company: selectedContact.company, status: selectedContact.status });
                     setShowEditModal(true);
                   }}
-                  className="w-full flex items-center justify-center gap-2 py-2 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] text-[#E4E4E7] text-sm font-semibold rounded-lg hover:bg-[rgba(255,255,255,0.06)] transition-colors"
+                  className="w-full flex items-center justify-center gap-2 py-2 bg-white border border-slate-200/80 text-slate-600 text-sm font-semibold rounded-lg hover:bg-slate-100 transition-colors"
                 >
                   Edit Profile
                 </button>
@@ -390,41 +390,41 @@ export default function ContactsPage() {
       {showEditModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-[#18181B] rounded-2xl shadow-[0_16px_40px_rgba(0,0,0,0.5)] border border-[rgba(255,255,255,0.1)] w-full max-w-md max-h-[90dvh] flex flex-col overflow-hidden animate-in zoom-in-95">
-            <div className="p-4 border-b border-[rgba(255,255,255,0.06)] flex justify-between items-center shrink-0">
-              <h2 className="font-bold text-[#FAFAFA]">Edit Contact</h2>
-              <button onClick={() => setShowEditModal(false)} className="text-[#A1A1AA] hover:text-[#FAFAFA]">
+            <div className="p-4 border-b border-slate-100 flex justify-between items-center shrink-0">
+              <h2 className="font-bold text-slate-800">Edit Contact</h2>
+              <button onClick={() => setShowEditModal(false)} className="text-slate-400 hover:text-slate-800">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
             <form onSubmit={handleEditSubmit} className="flex flex-col flex-1 overflow-hidden">
               <div className="p-4 space-y-4 overflow-y-auto">
               <div>
-                <label className="block text-xs font-bold text-[#A1A1AA] mb-1">Name</label>
-                <input type="text" value={editForm.name} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full px-3 h-11 border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] rounded-lg text-sm text-[#FAFAFA]" />
+                <label className="block text-xs font-bold text-slate-400 mb-1">Name</label>
+                <input type="text" value={editForm.name} onChange={e => setEditForm({...editForm, name: e.target.value})} className="w-full px-3 h-11 border border-slate-200/80 bg-white rounded-lg text-sm text-slate-800" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#A1A1AA] mb-1">Email</label>
-                <input type="email" value={editForm.email} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full px-3 h-11 border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] rounded-lg text-sm text-[#FAFAFA]" />
+                <label className="block text-xs font-bold text-slate-400 mb-1">Email</label>
+                <input type="email" value={editForm.email} onChange={e => setEditForm({...editForm, email: e.target.value})} className="w-full px-3 h-11 border border-slate-200/80 bg-white rounded-lg text-sm text-slate-800" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#A1A1AA] mb-1">Phone</label>
-                <input type="text" value={editForm.phone} onChange={e => setEditForm({...editForm, phone: e.target.value})} className="w-full px-3 h-11 border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] rounded-lg text-sm text-[#FAFAFA]" />
+                <label className="block text-xs font-bold text-slate-400 mb-1">Phone</label>
+                <input type="text" value={editForm.phone} onChange={e => setEditForm({...editForm, phone: e.target.value})} className="w-full px-3 h-11 border border-slate-200/80 bg-white rounded-lg text-sm text-slate-800" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#A1A1AA] mb-1">Company</label>
-                <input type="text" value={editForm.company} onChange={e => setEditForm({...editForm, company: e.target.value})} className="w-full px-3 h-11 border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] rounded-lg text-sm text-[#FAFAFA]" />
+                <label className="block text-xs font-bold text-slate-400 mb-1">Company</label>
+                <input type="text" value={editForm.company} onChange={e => setEditForm({...editForm, company: e.target.value})} className="w-full px-3 h-11 border border-slate-200/80 bg-white rounded-lg text-sm text-slate-800" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#A1A1AA] mb-1">Status</label>
-                <select style={{colorScheme:"dark"}} value={editForm.status} onChange={e => setEditForm({...editForm, status: e.target.value})} className="w-full px-3 h-11 border border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.03)] rounded-lg text-sm text-[#FAFAFA]">
+                <label className="block text-xs font-bold text-slate-400 mb-1">Status</label>
+                <select style={{} value={editForm.status} onChange={e => setEditForm({...editForm, status: e.target.value})} className="w-full px-3 h-11 border border-slate-200/80 bg-white rounded-lg text-sm text-slate-800">
                   <option value="Lead">Lead</option>
                   <option value="Customer">Customer</option>
                   <option value="Partner">Partner</option>
                 </select>
               </div>
               </div>
-              <div className="p-4 bg-[#09090B] border-t border-[rgba(255,255,255,0.06)] flex justify-end gap-2 shrink-0">
-                <button type="button" onClick={() => setShowEditModal(false)} className="px-4 h-11 min-w-[90px] border border-[rgba(255,255,255,0.08)] rounded-lg text-sm font-semibold text-[#A1A1AA] hover:bg-[rgba(255,255,255,0.05)]">Cancel</button>
+              <div className="p-4 bg-[#F8F9FC] border-t border-slate-100 flex justify-end gap-2 shrink-0">
+                <button type="button" onClick={() => setShowEditModal(false)} className="px-4 h-11 min-w-[90px] border border-slate-200/80 rounded-lg text-sm font-semibold text-slate-400 hover:bg-slate-100">Cancel</button>
                 <button type="submit" className="px-4 h-11 min-w-[120px] bg-[#4F46E5] text-white rounded-lg text-sm font-semibold hover:bg-[#4338CA]">Save Changes</button>
               </div>
             </form>
@@ -433,17 +433,17 @@ export default function ContactsPage() {
       )}
       {/* Create Contact Modal */}
       {showCreateModal && (
-        <div className="fixed inset-0 bg-[#09090B]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-[#F8F9FC]/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-[#18181B] border border-[rgba(255,255,255,0.1)] rounded-2xl shadow-[0_16px_40px_rgba(0,0,0,0.6)] w-full max-w-md flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
-            <div className="p-5 border-b border-[rgba(255,255,255,0.06)] flex justify-between items-center">
-              <h2 className="text-lg font-bold text-[#FAFAFA]">New Contact</h2>
-              <button onClick={() => { setShowCreateModal(false); setCreateForm({ name: "", email: "", phone: "", company: "" }); }} className="text-[#A1A1AA] hover:text-[#FAFAFA] p-1 rounded-lg hover:bg-[rgba(255,255,255,0.05)] transition-colors">
+            <div className="p-5 border-b border-slate-100 flex justify-between items-center">
+              <h2 className="text-lg font-bold text-slate-800">New Contact</h2>
+              <button onClick={() => { setShowCreateModal(false); setCreateForm({ name: "", email: "", phone: "", company: "" }); }} className="text-slate-400 hover:text-slate-800 p-1 rounded-lg hover:bg-slate-100 transition-colors">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
             <form onSubmit={handleCreateContact} className="p-5 space-y-4">
               <div>
-                <label className="block text-xs font-bold text-[#A1A1AA] uppercase tracking-wider mb-1.5">Name <span className="text-red-400">*</span></label>
+                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Name <span className="text-red-400">*</span></label>
                 <input
                   type="text"
                   value={createForm.name}
@@ -451,44 +451,44 @@ export default function ContactsPage() {
                   placeholder="e.g. John Doe"
                   autoFocus
                   required
-                  className="w-full px-4 h-11 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-lg text-sm text-[#FAFAFA] placeholder:text-[#52525B] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all"
+                  className="w-full px-4 h-11 bg-white border border-slate-200/80 rounded-lg text-sm text-slate-800 placeholder:text-[#52525B] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#A1A1AA] uppercase tracking-wider mb-1.5">Email</label>
+                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Email</label>
                 <input
                   type="email"
                   value={createForm.email}
                   onChange={e => setCreateForm({...createForm, email: e.target.value})}
                   placeholder="john@example.com"
-                  className="w-full px-4 h-11 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-lg text-sm text-[#FAFAFA] placeholder:text-[#52525B] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all"
+                  className="w-full px-4 h-11 bg-white border border-slate-200/80 rounded-lg text-sm text-slate-800 placeholder:text-[#52525B] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#A1A1AA] uppercase tracking-wider mb-1.5">Phone</label>
+                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Phone</label>
                 <input
                   type="text"
                   value={createForm.phone}
                   onChange={e => setCreateForm({...createForm, phone: e.target.value})}
                   placeholder="+1 234 567 890"
-                  className="w-full px-4 h-11 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-lg text-sm text-[#FAFAFA] placeholder:text-[#52525B] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all"
+                  className="w-full px-4 h-11 bg-white border border-slate-200/80 rounded-lg text-sm text-slate-800 placeholder:text-[#52525B] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all"
                 />
               </div>
               <div>
-                <label className="block text-xs font-bold text-[#A1A1AA] uppercase tracking-wider mb-1.5">Company</label>
+                <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">Company</label>
                 <input
                   type="text"
                   value={createForm.company}
                   onChange={e => setCreateForm({...createForm, company: e.target.value})}
                   placeholder="Acme Corp"
-                  className="w-full px-4 h-11 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-lg text-sm text-[#FAFAFA] placeholder:text-[#52525B] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all"
+                  className="w-full px-4 h-11 bg-white border border-slate-200/80 rounded-lg text-sm text-slate-800 placeholder:text-[#52525B] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all"
                 />
               </div>
               <div className="flex gap-3 pt-2">
                 <button
                   type="button"
                   onClick={() => { setShowCreateModal(false); setCreateForm({ name: "", email: "", phone: "", company: "" }); }}
-                  className="flex-1 h-11 border border-[rgba(255,255,255,0.08)] text-[#A1A1AA] text-sm font-semibold rounded-lg hover:bg-[rgba(255,255,255,0.04)] transition-colors"
+                  className="flex-1 h-11 border border-slate-200/80 text-slate-400 text-sm font-semibold rounded-lg hover:bg-[rgba(255,255,255,0.04)] transition-colors"
                 >
                   Cancel
                 </button>
@@ -509,4 +509,5 @@ export default function ContactsPage() {
     </div>
   );
 }
+
 
