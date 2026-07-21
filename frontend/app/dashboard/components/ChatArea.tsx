@@ -95,49 +95,50 @@ export const ChatArea = ({
 
   if (!activeConversation) {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center bg-[#09090B]">
-        <div className="w-16 h-16 bg-[rgba(255,255,255,0.02)] rounded-2xl flex items-center justify-center border border-[rgba(255,255,255,0.08)] shadow-sm mb-4">
-          <svg className="w-8 h-8 text-[#A1A1AA]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <div className="flex-1 flex flex-col items-center justify-center bg-[#F8F9FC]">
+        <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center border border-slate-200 shadow-lg mb-5">
+          <svg className="w-10 h-10 text-indigo-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
           </svg>
         </div>
-        <p className="text-[#A1A1AA] font-medium text-sm">Select a conversation to start chatting</p>
+        <p className="text-slate-700 font-bold text-base">No conversation selected</p>
+        <p className="text-slate-400 text-sm mt-1">Pick a conversation from the inbox</p>
       </div>
     );
   }
 
   return (
-    <div className="flex-1 flex flex-col min-w-0 bg-[#09090B] relative">
-      <div className="h-16 flex items-center justify-between px-4 lg:px-6 border-b border-[rgba(255,255,255,0.08)] bg-[#09090B]/80 backdrop-blur-xl z-10 flex-shrink-0">
+    <div className="flex-1 flex flex-col min-w-0 bg-[#F8F9FC] relative">
+      <div className="h-[60px] flex items-center justify-between px-4 lg:px-6 border-b border-slate-200/80 bg-white z-10 flex-shrink-0 shadow-sm">
         <div className="flex items-center gap-3 overflow-hidden">
           {onBack && (
-            <button onClick={onBack} className="md:hidden p-1.5 -ml-1.5 mr-1 text-[#A1A1AA] hover:text-[#FAFAFA] rounded-md transition-colors">
+            <button onClick={onBack} className="md:hidden p-1.5 -ml-1.5 mr-1 text-slate-400 hover:text-slate-700 rounded-md transition-colors">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
               </svg>
             </button>
           )}
-          <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#4F46E5] to-[#818CF8] shadow-[0_4px_12px_rgba(79,70,229,0.3)] flex items-center justify-center text-white font-semibold text-[13px] ring-1 ring-[rgba(255,255,255,0.1)] shrink-0">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 shadow-md flex items-center justify-center text-white font-bold text-[14px] shrink-0">
             {activeConversation?.visitorId?.name?.charAt(0).toUpperCase() || 'V'}
           </div>
           <div>
             <div className="flex items-center gap-2 mb-0.5">
-              <h2 className="text-[14px] font-semibold text-[#FAFAFA] tracking-tight">{activeConversation?.visitorId?.name || 'Anonymous'}</h2>
-              <div className="text-[#A1A1AA]"><ChannelIcon type={activeConversation?.channel || 'web'} /></div>
+              <h2 className="text-[14px] font-bold text-slate-800 tracking-tight">{activeConversation?.visitorId?.name || 'Anonymous'}</h2>
+              <div className="text-slate-400"><ChannelIcon type={activeConversation?.channel || 'web'} /></div>
             </div>
-            <p className="text-[11px] text-green-400 font-semibold flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+            <p className="text-[11px] text-emerald-600 font-semibold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.5)]"></span>
               Active on Website
             </p>
           </div>
           <div className="hidden sm:flex flex-col items-start gap-1 ml-2 md:ml-4">
             {activeConversation?.mode === 'ai' ? (
-              <span className="bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase flex items-center gap-1 border border-purple-500/30">
+              <span className="bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase flex items-center gap-1 border border-purple-200">
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>
                 AI Handling
               </span>
             ) : (
-              <span className="bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded text-[10px] font-bold tracking-wide uppercase flex items-center gap-1 border border-blue-500/30">
+              <span className="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase flex items-center gap-1 border border-blue-200">
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
                 Agent Handling
               </span>
@@ -221,9 +222,9 @@ export const ChatArea = ({
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-[#09090B]">
+      <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-[#F8F9FC]">
         <div className="text-center">
-          <span className="text-[11px] font-semibold text-[#A1A1AA] uppercase tracking-wide">Today</span>
+          <span className="inline-block text-[11px] font-semibold text-slate-400 uppercase tracking-wider bg-white border border-slate-200 px-3 py-1 rounded-full shadow-sm">Today</span>
         </div>
         
         {messages.map((m) => (
@@ -272,10 +273,10 @@ export const ChatArea = ({
               </div>
             ) : (
               <div className={`max-w-[85%] sm:max-w-[70%] mb-4 ${m.type === "operator" ? "order-1" : "order-2"}`}>
-                <div className={`px-4 py-3 rounded-2xl text-[15px] leading-relaxed shadow-sm backdrop-blur-md ${
+                <div className={`px-4 py-3 rounded-2xl text-[14px] leading-relaxed shadow-sm ${
                   m.type === "operator" 
-                    ? "bg-gradient-to-tr from-[#4F46E5] to-[#818CF8] text-white rounded-tr-sm shadow-[0_4px_12px_rgba(79,70,229,0.2)]" 
-                    : "bg-[rgba(255,255,255,0.05)] text-[#E4E4E7] rounded-tl-sm border border-[rgba(255,255,255,0.08)]"
+                    ? "bg-indigo-600 text-white rounded-tr-sm shadow-[0_4px_16px_rgba(99,102,241,0.25)]" 
+                    : "bg-white text-slate-700 rounded-tl-sm border border-slate-200/80 shadow-sm"
                 }`}>
                   {m.text && m.text.includes("res.cloudinary.com") ? (
                     m.text.includes("/image/upload/") || m.text.match(/\.(jpeg|jpg|gif|png|webp)$/i) ? (
@@ -292,7 +293,7 @@ export const ChatArea = ({
                     m.text
                   )}
                 </div>
-                <div className={`text-[10px] text-[#A1A1AA] mt-1.5 font-medium ${m.type === "operator" ? "text-right" : "text-left"}`}>
+                <div className={`text-[10px] text-slate-400 mt-1.5 font-medium ${m.type === "operator" ? "text-right" : "text-left"}`}>
                   {m.time}
                 </div>
               </div>
@@ -303,9 +304,9 @@ export const ChatArea = ({
       </div>
 
       {/* Composer */}
-      <div className="p-4 bg-[#09090B] border-t border-[rgba(255,255,255,0.08)] shrink-0 z-10">
+      <div className="p-4 bg-white border-t border-slate-200/80 shrink-0 z-10">
         {activeConversation.status === 'resolved' ? (
-          <div className="text-center py-4 bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] rounded-lg text-[#A1A1AA] text-sm font-medium">
+          <div className="text-center py-4 bg-slate-50 border border-slate-200 rounded-xl text-slate-500 text-sm font-medium">
             This conversation has been resolved. You cannot send new messages.
           </div>
         ) : (
@@ -384,7 +385,7 @@ export const ChatArea = ({
             )}
             
             <div className={`flex flex-col border rounded-xl overflow-hidden transition-all shadow-sm focus-within:shadow-md ${
-              isPrivateNote ? 'border-yellow-500/50 bg-yellow-500/5 focus-within:border-yellow-400 focus-within:ring-1 focus-within:ring-yellow-400' : 'border-[rgba(255,255,255,0.1)] bg-[#09090B] focus-within:border-[#4F46E5] focus-within:ring-1 focus-within:ring-[#4F46E5]'
+              isPrivateNote ? 'border-amber-300 bg-amber-50 focus-within:border-amber-400 focus-within:ring-2 focus-within:ring-amber-400/20' : 'border-slate-200 bg-white focus-within:border-indigo-400 focus-within:ring-2 focus-within:ring-indigo-500/10'
             }`}>
               <textarea 
                 value={inputText}
@@ -395,10 +396,10 @@ export const ChatArea = ({
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder={isPrivateNote ? "Type a private internal note..." : "Type a message... (Press '/' for templates)"} 
-                className={`w-full min-h-[70px] bg-transparent border-none resize-none py-3 px-4 text-[14px] text-[#FAFAFA] focus:outline-none placeholder:text-[#A1A1AA] ${isPrivateNote ? 'placeholder-yellow-600/60' : ''}`}
+                className={`w-full min-h-[70px] bg-transparent border-none resize-none py-3 px-4 text-[14px] text-slate-800 focus:outline-none placeholder:text-slate-400 ${isPrivateNote ? 'placeholder-amber-400/70' : ''}`}
               />
               <div className={`px-2 py-2 border-t flex items-center justify-between ${
-                isPrivateNote ? 'border-[rgba(234,179,8,0.2)] bg-[rgba(234,179,8,0.1)]' : 'border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.02)]'
+                isPrivateNote ? 'border-amber-200 bg-amber-50' : 'border-slate-100 bg-slate-50'
               }`}>
                 <div className="flex gap-1">
                   <input type="file" ref={fileInputRef} onChange={handleFileUpload} className="hidden" accept="*/*" />
@@ -437,10 +438,10 @@ export const ChatArea = ({
                 <button 
                   onClick={() => handleSendMessage()}
                   disabled={!inputText.trim()}
-                  className={`flex items-center gap-2 px-4 h-11 rounded-lg text-[15px] font-semibold transition-all shadow-sm ${
+                  className={`flex items-center gap-2 px-5 h-10 rounded-lg text-[14px] font-semibold transition-all shadow-sm ${
                     !inputText.trim()
-                      ? isPrivateNote ? 'bg-[rgba(234,179,8,0.1)] text-yellow-600/50 cursor-not-allowed border border-transparent' : 'bg-[rgba(255,255,255,0.03)] text-[#A1A1AA]/50 cursor-not-allowed border border-[rgba(255,255,255,0.05)]'
-                      : isPrivateNote ? 'bg-yellow-500 hover:bg-yellow-400 text-yellow-950 shadow-[0_2px_8px_rgba(234,179,8,0.4)]' : 'bg-[#4F46E5] hover:bg-[#4338CA] text-white shadow-[0_2px_8px_rgba(79,70,229,0.4)]'
+                      ? isPrivateNote ? 'bg-amber-100 text-amber-400 cursor-not-allowed' : 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                      : isPrivateNote ? 'bg-amber-500 hover:bg-amber-400 text-white shadow-md' : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-200'
                   }`}
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>
