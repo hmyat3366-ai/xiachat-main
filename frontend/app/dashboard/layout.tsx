@@ -242,10 +242,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
   }, [pathname]);
 
   return (
-    <div className="flex flex-col xl:flex-row h-[100dvh] bg-[#09090B] overflow-hidden font-sans text-[#FAFAFA]">
+    <div className="flex flex-col xl:flex-row h-[100dvh] bg-[#F8F9FC] overflow-hidden font-sans text-slate-800">
       {/* Mobile Header */}
-      <div className="xl:hidden flex items-center justify-between h-14 bg-[#09090B]/80 backdrop-blur-xl border-b border-[rgba(255,255,255,0.08)] text-[#FAFAFA] px-4 shrink-0 z-30 sticky top-0">
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2 -ml-2 text-[#A1A1AA] hover:text-[#FAFAFA] transition-colors rounded-lg hover:bg-[rgba(255,255,255,0.06)]">
+      <div className="xl:hidden flex items-center justify-between h-14 bg-white border-b border-slate-200 text-slate-800 px-4 shrink-0 z-30 sticky top-0 shadow-sm">
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2 -ml-2 text-slate-500 hover:text-slate-800 transition-colors rounded-lg hover:bg-slate-100">
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
@@ -258,12 +258,12 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
       {/* Overlay for mobile sidebar */}
       <div 
-        className={`fixed inset-0 bg-[#09090B]/60 z-40 xl:hidden backdrop-blur-sm transition-opacity duration-300 ${mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        className={`fixed inset-0 bg-slate-900/40 z-40 xl:hidden backdrop-blur-sm transition-opacity duration-300 ${mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         onClick={() => setMobileOpen(false)}
       />
 
       {/* ─── PREMIUM GLASS SIDEBAR ─── */}
-      <aside className={`fixed inset-y-0 left-0 transform ${mobileOpen ? "translate-x-0" : "-translate-x-full"} xl:relative xl:translate-x-0 w-[72px] flex flex-col items-center py-6 border-r border-[rgba(255,255,255,0.08)] bg-[#09090B] z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[4px_0_24px_rgba(0,0,0,0.5)] xl:shadow-none`}>
+      <aside className={`fixed inset-y-0 left-0 transform ${mobileOpen ? "translate-x-0" : "-translate-x-full"} xl:relative xl:translate-x-0 w-[72px] flex flex-col items-center py-6 border-r border-slate-200/80 bg-white z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[2px_0_12px_rgba(0,0,0,0.06)] xl:shadow-none`}>
         <Link href="/dashboard" className="w-12 h-12 mb-6 group relative flex items-center justify-center" onClick={() => setMobileOpen(false)}>
           <img src="/logo.png" alt="Xia Chat Logo" className="w-9 h-9 group-hover:scale-105 transition-transform duration-300" />
         </Link>
@@ -288,21 +288,21 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 }}
                 className={`group relative w-12 h-12 flex items-center justify-center rounded-2xl transition-all duration-200 ${
                   isActive 
-                    ? 'bg-[rgba(255,255,255,0.06)] text-[#FAFAFA] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)] ring-1 ring-[rgba(255,255,255,0.08)]' 
-                    : 'text-[#A1A1AA] hover:bg-[rgba(255,255,255,0.04)] hover:text-[#FAFAFA]'
+                    ? 'bg-indigo-50 text-indigo-600 ring-1 ring-indigo-200' 
+                    : 'text-slate-400 hover:bg-slate-100 hover:text-slate-700'
                 }`}
               >
                 {isActive && (
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-[#4F46E5] rounded-r-full shadow-[0_0_12px_rgba(79,70,229,0.8)]"></div>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 bg-indigo-600 rounded-r-full"></div>
                 )}
                 <div className="transform group-hover:scale-110 transition-transform duration-200">
                   {item.icon}
                 </div>
                 {item.label === "Inbox" && unreadCount > 0 && (
-                  <span className="absolute top-2 right-2 flex h-2 w-2 items-center justify-center rounded-full bg-[#EF4444] shadow-[0_0_8px_rgba(239,68,68,0.6)] ring-2 ring-[#09090B]"></span>
+                  <span className="absolute top-2 right-2 flex h-2 w-2 items-center justify-center rounded-full bg-red-500 ring-2 ring-white"></span>
                 )}
                 {/* Glass Tooltip */}
-                <div className="absolute left-16 px-3 py-1.5 bg-[#09090B]/90 backdrop-blur-xl border border-[rgba(255,255,255,0.08)] text-[#FAFAFA] text-xs font-semibold rounded-lg shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-200 z-50 whitespace-nowrap translate-x-1 group-hover:translate-x-0">
+                <div className="absolute left-16 px-3 py-1.5 bg-slate-800 text-white text-xs font-semibold rounded-lg shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-200 z-50 whitespace-nowrap translate-x-1 group-hover:translate-x-0">
                   {item.label}
                   {item.label === "Inbox" && unreadCount > 0 && ` (${unreadCount})`}
                 </div>
@@ -321,12 +321,12 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 <Link
                   href="/dashboard/settings"
                   onClick={() => setMobileOpen(false)}
-                  className="group relative w-12 h-12 flex items-center justify-center rounded-2xl text-[#A1A1AA] hover:bg-[rgba(255,255,255,0.04)] hover:text-[#FAFAFA] transition-all duration-200"
+                  className="group relative w-12 h-12 flex items-center justify-center rounded-2xl text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-all duration-200"
                 >
                   <div className="transform group-hover:rotate-45 transition-transform duration-300">
                     <SettingsIcon />
                   </div>
-                  <div className="absolute left-16 px-3 py-1.5 bg-[#09090B]/90 backdrop-blur-xl border border-[rgba(255,255,255,0.08)] text-[#FAFAFA] text-xs font-semibold rounded-lg shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-200 z-50 whitespace-nowrap translate-x-1 group-hover:translate-x-0">
+                  <div className="absolute left-16 px-3 py-1.5 bg-slate-800 text-white text-xs font-semibold rounded-lg shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-200 z-50 whitespace-nowrap translate-x-1 group-hover:translate-x-0">
                     Settings
                   </div>
                 </Link>
@@ -337,17 +337,17 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           <div className="relative" ref={profileRef}>
             <div 
               onClick={() => setProfileOpen(!profileOpen)}
-              className={`relative w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 border shadow-md ring-2 ring-transparent hover:ring-[rgba(255,255,255,0.15)] ${
+              className={`relative w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 border ring-2 ring-transparent hover:ring-indigo-200 ${
                 workspaceData?.plan === 'pro' 
-                  ? 'bg-gradient-to-tr from-[#F59E0B] to-[#fbbf24] border-transparent text-[#09090B] shadow-[0_0_15px_rgba(245,158,11,0.3)]' 
-                  : 'bg-[rgba(255,255,255,0.06)] border-[rgba(255,255,255,0.08)] text-[#FAFAFA]'
+                  ? 'bg-gradient-to-tr from-amber-400 to-yellow-300 border-transparent text-slate-800 shadow-md' 
+                  : 'bg-gradient-to-br from-indigo-500 to-violet-600 border-transparent text-white shadow-md'
               }`}
             >
               <span className={`text-sm font-bold tracking-wider`}>
                 {user?.name?.charAt(0).toUpperCase() || "U"}
               </span>
               {workspaceData?.plan === 'pro' && (
-                <div className="absolute -bottom-1 -right-1 bg-gradient-to-r from-[#F59E0B] to-[#D97706] text-[#FAFAFA] text-[9px] font-bold px-1.5 py-[1px] rounded shadow-sm border border-[#09090B]">
+                <div className="absolute -bottom-1 -right-1 bg-gradient-to-r from-amber-400 to-amber-500 text-white text-[9px] font-bold px-1.5 py-[1px] rounded shadow-sm border border-white">
                   PRO
                 </div>
               )}
@@ -355,36 +355,36 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             
             {/* Premium Glass Dropdown */}
             {profileOpen && (
-              <div className="absolute bottom-2 left-16 w-64 bg-[#09090B]/80 backdrop-blur-2xl rounded-2xl shadow-[0_24px_48px_rgba(0,0,0,0.6)] border border-[rgba(255,255,255,0.08)] overflow-hidden z-50 animate-in fade-in slide-in-from-left-4 duration-200">
-                <div className="p-4 bg-[rgba(255,255,255,0.03)] border-b border-[rgba(255,255,255,0.08)] flex items-center gap-3">
+              <div className="absolute bottom-2 left-16 w-64 bg-white rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.12)] border border-slate-200 overflow-hidden z-50 animate-in fade-in slide-in-from-left-4 duration-200">
+                <div className="p-4 bg-slate-50 border-b border-slate-100 flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold shadow-inner ${workspaceData?.plan === 'pro' ? 'bg-gradient-to-br from-[#F59E0B] to-[#D97706] text-[#FAFAFA]' : 'bg-gradient-to-tr from-[#4F46E5] to-[#818CF8] text-[#FAFAFA]'}`}>
                     {user?.name?.charAt(0).toUpperCase() || "U"}
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-1">
-                      <p className="text-sm font-semibold text-[#FAFAFA] truncate">{user?.name || "User"}</p>
+                      <p className="text-sm font-semibold text-slate-800 truncate">{user?.name || "User"}</p>
                       {workspaceData?.plan === 'pro' ? (
-                        <span className="bg-[#F59E0B]/20 text-[#F59E0B] border border-[#F59E0B]/30 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">PRO</span>
+                        <span className="bg-amber-100 text-amber-700 border border-amber-200 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">PRO</span>
                       ) : (
-                        <span className="bg-white/10 text-[#A1A1AA] border border-white/10 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">FREE</span>
+                        <span className="bg-slate-100 text-slate-500 border border-slate-200 text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">FREE</span>
                       )}
                     </div>
-                    <p className="text-xs text-[#A1A1AA] truncate">{user?.email || "No Workspace"}</p>
+                    <p className="text-xs text-slate-400 truncate">{user?.email || "No Workspace"}</p>
                   </div>
                 </div>
                 
                 <div className="p-2 space-y-1">
-                  <button onClick={() => { setProfileOpen(false); setShowProfileModal(true); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-[#FAFAFA] font-medium hover:bg-[rgba(255,255,255,0.06)] rounded-xl transition-colors">
-                    <svg className="w-4 h-4 text-[#A1A1AA]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+                  <button onClick={() => { setProfileOpen(false); setShowProfileModal(true); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-slate-700 font-medium hover:bg-slate-50 rounded-xl transition-colors">
+                    <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
                     My Profile
                   </button>
-                  <button onClick={() => { setProfileOpen(false); setShowWorkspaceModal(true); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-[#FAFAFA] font-medium hover:bg-[rgba(255,255,255,0.06)] rounded-xl transition-colors">
-                    <svg className="w-4 h-4 text-[#A1A1AA]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" /></svg>
+                  <button onClick={() => { setProfileOpen(false); setShowWorkspaceModal(true); }} className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-slate-700 font-medium hover:bg-slate-50 rounded-xl transition-colors">
+                    <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" /></svg>
                     Switch Workspace
                   </button>
                 </div>
                 
-                <div className="p-2 border-t border-[rgba(255,255,255,0.08)]">
+                <div className="p-2 border-t border-slate-100">
                   <button onClick={() => {
                     localStorage.removeItem("token");
                     localStorage.removeItem("user");
@@ -401,7 +401,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       </aside>
 
       {/* ─── MAIN CONTENT ─── */}
-      <main className="flex-1 flex flex-col min-w-0 bg-[#09090B] overflow-hidden relative">
+      <main className="flex-1 flex flex-col min-w-0 bg-[#F8F9FC] overflow-hidden relative">
         {children}
       </main>
       
