@@ -314,7 +314,7 @@ export default function InboxPage() {
   const activeConversation = conversations.find(c => c._id === activeConversationId);
 
   return (
-    <div className="flex-1 flex h-full overflow-hidden bg-[#09090B]">
+    <div className="flex-1 flex h-full overflow-hidden bg-[#F8F9FC]">
       <div className={`shrink-0 h-full ${isMobileChatOpen ? 'hidden lg:flex' : 'flex w-full lg:w-auto'}`}>
         <ConversationList 
           conversations={conversations} 
@@ -327,7 +327,7 @@ export default function InboxPage() {
         />
       </div>
 
-      <div className={`flex-1 flex h-full overflow-hidden bg-[#09090B] ${isMobileChatOpen ? 'flex' : 'hidden lg:flex'}`}>
+      <div className={`flex-1 flex h-full overflow-hidden bg-[#F8F9FC] ${isMobileChatOpen ? 'flex' : 'hidden lg:flex'}`}>
         <ChatArea 
           activeConversation={activeConversation}
           messages={messages}

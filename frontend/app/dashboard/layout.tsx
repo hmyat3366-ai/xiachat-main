@@ -193,7 +193,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           <div
             className={`${
               t.visible ? 'animate-in slide-in-from-top-4' : 'animate-out slide-out-to-top-4 fade-out'
-            } max-w-sm w-full bg-[#09090B]/80 backdrop-blur-2xl shadow-[0_24px_48px_rgba(0,0,0,0.6)] rounded-2xl pointer-events-auto flex ring-1 ring-[rgba(255,255,255,0.08)] cursor-pointer text-[#FAFAFA] overflow-hidden`}
+            } max-w-sm w-full bg-white shadow-xl rounded-2xl pointer-events-auto flex ring-1 ring-[rgba(255,255,255,0.08)] cursor-pointer text-slate-800 overflow-hidden`}
             onClick={() => {
               toast.dismiss(t.id);
               router.push("/dashboard");
@@ -207,10 +207,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                   </div>
                 </div>
                 <div className="ml-3 flex-1">
-                  <p className="text-sm font-bold text-[#FAFAFA]">
+                  <p className="text-sm font-bold text-slate-800">
                     {data.sender || 'New Visitor'}
                   </p>
-                  <p className="mt-1 text-sm text-[#A1A1AA] line-clamp-1">
+                  <p className="mt-1 text-sm text-slate-500 line-clamp-1">
                     {data.text}
                   </p>
                 </div>
@@ -357,7 +357,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             {profileOpen && (
               <div className="absolute bottom-2 left-16 w-64 bg-white rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.12)] border border-slate-200 overflow-hidden z-50 animate-in fade-in slide-in-from-left-4 duration-200">
                 <div className="p-4 bg-slate-50 border-b border-slate-100 flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold shadow-inner ${workspaceData?.plan === 'pro' ? 'bg-gradient-to-br from-[#F59E0B] to-[#D97706] text-[#FAFAFA]' : 'bg-gradient-to-tr from-[#4F46E5] to-[#818CF8] text-[#FAFAFA]'}`}>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold shadow-inner ${workspaceData?.plan === 'pro' ? 'bg-gradient-to-br from-[#F59E0B] to-[#D97706] text-slate-800' : 'bg-gradient-to-tr from-[#4F46E5] to-[#818CF8] text-slate-800'}`}>
                     {user?.name?.charAt(0).toUpperCase() || "U"}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -409,42 +409,42 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       
       {/* Profile Modal - Premium Glass Card */}
       {showProfileModal && (
-        <div className="fixed inset-0 bg-[#09090B]/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="bg-[#09090B]/80 backdrop-blur-2xl rounded-3xl shadow-[0_24px_48px_rgba(0,0,0,0.8)] border border-[rgba(255,255,255,0.08)] w-full max-w-sm max-h-[90dvh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
-            <div className="flex justify-between items-center p-5 border-b border-[rgba(255,255,255,0.08)] shrink-0 bg-[rgba(255,255,255,0.02)]">
-              <h2 className="text-base font-semibold text-[#FAFAFA]">My Profile</h2>
-              <button onClick={() => setShowProfileModal(false)} className="text-[#A1A1AA] hover:text-[#FAFAFA] hover:bg-[rgba(255,255,255,0.06)] p-1.5 rounded-lg transition-colors">
+        <div className="fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
+          <div className="bg-white rounded-3xl shadow-xl border border-slate-200 w-full max-w-sm max-h-[90dvh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="flex justify-between items-center p-5 border-b border-slate-200 shrink-0 bg-slate-50">
+              <h2 className="text-base font-semibold text-slate-800">My Profile</h2>
+              <button onClick={() => setShowProfileModal(false)} className="text-slate-500 hover:text-slate-800 hover:bg-slate-100 p-1.5 rounded-lg transition-colors">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
             <div className="p-6 space-y-5 overflow-y-auto">
               <div className="flex justify-center mb-2">
-                <div className="w-24 h-24 rounded-full bg-[rgba(255,255,255,0.06)] border border-[rgba(255,255,255,0.1)] text-[#FAFAFA] flex items-center justify-center text-4xl font-light shadow-inner relative group cursor-pointer overflow-hidden">
+                <div className="w-24 h-24 rounded-full bg-slate-100 border border-[rgba(255,255,255,0.1)] text-slate-800 flex items-center justify-center text-4xl font-light shadow-inner relative group cursor-pointer overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#4F46E5] to-[#818CF8] opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative z-10 font-bold">{profileName.charAt(0).toUpperCase() || "U"}</span>
                 </div>
               </div>
               <div className="space-y-1.5">
-                <label className="block text-xs font-medium text-[#A1A1AA] uppercase tracking-wider">Full Name</label>
+                <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider">Full Name</label>
                 <input 
                   type="text" 
                   value={profileName}
                   onChange={(e) => setProfileName(e.target.value)}
-                  className="w-full px-4 h-12 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-xl text-sm text-[#FAFAFA] placeholder-[#A1A1AA] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all shadow-inner" 
+                  className="w-full px-4 h-12 bg-[rgba(255,255,255,0.04)] border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-[#A1A1AA] focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-indigo-500 transition-all shadow-inner" 
                 />
               </div>
               <div className="space-y-1.5">
-                <label className="block text-xs font-medium text-[#A1A1AA] uppercase tracking-wider">Email Address</label>
+                <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider">Email Address</label>
                 <input 
                   type="email" 
                   value={user?.email || ""}
                   disabled
-                  className="w-full px-4 h-12 border border-[rgba(255,255,255,0.04)] bg-[rgba(0,0,0,0.2)] rounded-xl text-sm text-[#A1A1AA] cursor-not-allowed shadow-inner" 
+                  className="w-full px-4 h-12 border border-[rgba(255,255,255,0.04)] bg-[rgba(0,0,0,0.2)] rounded-xl text-sm text-slate-500 cursor-not-allowed shadow-inner" 
                 />
               </div>
             </div>
-            <div className="p-5 bg-[rgba(255,255,255,0.02)] border-t border-[rgba(255,255,255,0.08)] flex justify-end gap-3 shrink-0">
-              <button onClick={() => setShowProfileModal(false)} className="px-5 h-11 bg-transparent border border-[rgba(255,255,255,0.1)] text-[#FAFAFA] text-sm font-medium rounded-xl hover:bg-[rgba(255,255,255,0.06)] transition-all">Cancel</button>
+            <div className="p-5 bg-slate-50 border-t border-slate-200 flex justify-end gap-3 shrink-0">
+              <button onClick={() => setShowProfileModal(false)} className="px-5 h-11 bg-transparent border border-[rgba(255,255,255,0.1)] text-slate-800 text-sm font-medium rounded-xl hover:bg-slate-100 transition-all">Cancel</button>
               <button onClick={() => {
                 const updatedUser = { ...user, name: profileName };
                 localStorage.setItem("user", JSON.stringify(updatedUser));
@@ -459,11 +459,11 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
       {/* Switch Workspace Modal - Premium Glass Card */}
       {showWorkspaceModal && (
-        <div className="fixed inset-0 bg-[#09090B]/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="bg-[#09090B]/80 backdrop-blur-2xl rounded-3xl shadow-[0_24px_48px_rgba(0,0,0,0.8)] border border-[rgba(255,255,255,0.08)] w-full max-w-md max-h-[90dvh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
-            <div className="flex justify-between items-center p-5 border-b border-[rgba(255,255,255,0.08)] shrink-0 bg-[rgba(255,255,255,0.02)]">
-              <h2 className="text-base font-semibold text-[#FAFAFA]">Switch Workspace</h2>
-              <button onClick={() => setShowWorkspaceModal(false)} className="text-[#A1A1AA] hover:text-[#FAFAFA] hover:bg-[rgba(255,255,255,0.06)] p-1.5 rounded-lg transition-colors">
+        <div className="fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
+          <div className="bg-white rounded-3xl shadow-xl border border-slate-200 w-full max-w-md max-h-[90dvh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="flex justify-between items-center p-5 border-b border-slate-200 shrink-0 bg-slate-50">
+              <h2 className="text-base font-semibold text-slate-800">Switch Workspace</h2>
+              <button onClick={() => setShowWorkspaceModal(false)} className="text-slate-500 hover:text-slate-800 hover:bg-slate-100 p-1.5 rounded-lg transition-colors">
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
               </button>
             </div>
@@ -475,8 +475,8 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                     X
                   </div>
                   <div className="text-left">
-                    <p className="text-sm font-semibold text-[#FAFAFA]">Xia Chat Workspace</p>
-                    <p className="text-xs text-[#A1A1AA] mt-0.5">{workspaceData?.plan === 'pro' ? 'Pro Plan' : 'Free Plan'}</p>
+                    <p className="text-sm font-semibold text-slate-800">Xia Chat Workspace</p>
+                    <p className="text-xs text-slate-500 mt-0.5">{workspaceData?.plan === 'pro' ? 'Pro Plan' : 'Free Plan'}</p>
                   </div>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-[rgba(79,70,229,0.2)] flex items-center justify-center text-[#4F46E5]">
@@ -490,13 +490,13 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
               {/* Create New Card */}
               <button onClick={() => {
                 toast("Creating new workspaces will be available soon!");
-              }} className="w-full flex items-center gap-4 p-4 rounded-2xl bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.04)] hover:border-[rgba(255,255,255,0.1)] transition-all group border-dashed">
-                <div className="w-12 h-12 rounded-xl bg-[rgba(255,255,255,0.05)] text-[#A1A1AA] group-hover:text-[#FAFAFA] flex items-center justify-center font-bold transition-colors">
+              }} className="w-full flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.04)] hover:border-[rgba(255,255,255,0.1)] transition-all group border-dashed">
+                <div className="w-12 h-12 rounded-xl bg-[rgba(255,255,255,0.05)] text-slate-500 group-hover:text-slate-800 flex items-center justify-center font-bold transition-colors">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                 </div>
                 <div className="text-left">
-                  <p className="text-sm font-semibold text-[#FAFAFA] transition-colors">Create Workspace</p>
-                  <p className="text-xs text-[#A1A1AA] mt-0.5">Start a new project or company</p>
+                  <p className="text-sm font-semibold text-slate-800 transition-colors">Create Workspace</p>
+                  <p className="text-xs text-slate-500 mt-0.5">Start a new project or company</p>
                 </div>
               </button>
             </div>
@@ -506,3 +506,5 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
     </div>
   );
 }
+
+
