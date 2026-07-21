@@ -444,7 +444,7 @@ function SettingsContent() {
                         </td>
                         <td className="px-6 py-4">
                           {currentUserRole !== 'agent' && member.role !== 'owner' ? (
-                            <select style={{} 
+                            <select 
                               className="bg-slate-50 border border-slate-200/80 text-slate-600 text-xs font-semibold rounded-md px-2 py-1 focus:outline-none focus:border-[#4F46E5] capitalize cursor-pointer"
                               value={member.role}
                               onChange={async (e) => {
@@ -994,7 +994,7 @@ function SettingsContent() {
               </div>
               <div>
                 <label className="block text-sm font-semibold text-slate-800 mb-1.5">Role</label>
-                <select style={{} 
+                <select 
                   className="w-full px-4 py-2 border border-slate-200/80 rounded-lg text-sm"
                   value={inviteRole}
                   onChange={(e) => setInviteRole(e.target.value)}

@@ -259,7 +259,7 @@ export default function ContactsPage() {
               className="w-full pl-9 pr-3 py-2 bg-white border border-slate-200/80 rounded-lg text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#4F46E5]/50 focus:border-[#4F46E5] transition-all placeholder:text-slate-400" 
             />
           </div>
-          <select style={{} className="px-3 py-2 bg-white border border-slate-200/80 rounded-lg text-sm text-slate-600 font-medium focus:outline-none focus:border-[#4F46E5]">
+          <select className="px-3 py-2 bg-white border border-slate-200/80 rounded-lg text-sm text-slate-600 font-medium focus:outline-none focus:border-[#4F46E5]">
             <option>All Segments</option>
             <option>Customers</option>
             <option>Leads</option>
@@ -416,7 +416,7 @@ export default function ContactsPage() {
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-400 mb-1">Status</label>
-                <select style={{} value={editForm.status} onChange={e => setEditForm({...editForm, status: e.target.value})} className="w-full px-3 h-11 border border-slate-200/80 bg-white rounded-lg text-sm text-slate-800">
+                <select value={editForm.status} onChange={e => setEditForm({...editForm, status: e.target.value})} className="w-full px-3 h-11 border border-slate-200/80 bg-white rounded-lg text-sm text-slate-800">
                   <option value="Lead">Lead</option>
                   <option value="Customer">Customer</option>
                   <option value="Partner">Partner</option>
